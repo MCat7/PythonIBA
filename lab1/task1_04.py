@@ -9,7 +9,6 @@ def switch(n):
 
 
 num = int(input("Укажите номер месяца: "))
-
 print(switch(num))
 
 
