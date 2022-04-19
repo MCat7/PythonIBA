@@ -5,7 +5,7 @@ C = int(input())
 D = int(input())
 arr = [A, B, C, D]
 flag = False
-for i in range(1, len(arr)):
+for i in range(0, len(arr)):
     if arr[i] % 2 == 0:
         print("Есть минимум одно чётное")
         flag = True
