@@ -12,7 +12,7 @@ def sUm(x):
     return sum
 
 
-for i in range(100000, 1000000):
+for i in range(1, 1000000):
     if sUm(i) % 7 == 0 and sUm(i + 1) % 7 == 0:
         print(f'Найденная пара:   {i} & {i + 1}')
         # l.append(i)
