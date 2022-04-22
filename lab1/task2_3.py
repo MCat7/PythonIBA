@@ -57,7 +57,7 @@ def sort_height_girls(student):
     if student.gender == 'женский':
         return student.get_h()
     else:
-        return 0
+        return 10000
 
 
 def random_gender():
