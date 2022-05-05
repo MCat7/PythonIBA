@@ -12,7 +12,7 @@ for i in range(len(A)):
     if A[i] == 0:
         indexFirstZero = i
         break
-for i in range(len(A) - 1, -1, -1):
+for i in range(len(A) - 1, 0, -1):
     if A[i] == 0:
         indexLastZero = i
         break

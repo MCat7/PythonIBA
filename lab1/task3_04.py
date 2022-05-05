@@ -11,3 +11,5 @@ for i in range(len(A)):
     if A[i] < minimum:
         minimum = A[i]
 print(f'Минимум: {minimum}')
+
+print(f'Минимум: {min(A)}')

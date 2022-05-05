@@ -9,5 +9,6 @@ print(f'A: {A}')
 for i in range(len(A)):
     if i % 7 != 0 or i == 0:
         B.append(A[i])
+    else:
+        B.append("")
 print(f'B: {B}')
-
