@@ -3,8 +3,9 @@
 import random
 
 n = int(input('Укажите размер списка: '))
-A = [random.randint(0, 99) for _ in range(n)]
+A = [random.randint(0, 5) for _ in range(n)]
 
+# 1-ый вариант
 print(f'A: {A}')
 indexFirstZero = -1
 indexLastZero = -1
@@ -21,3 +22,12 @@ if indexFirstZero == -1:
 else:
     print(f'Индекс первого нулевого элемента: {indexFirstZero}')
     print(f'Индекс последненго нулевого элемента: {indexLastZero}')
+
+# 2-ой вариант
+try:
+    print(f'Индекс первого нулевого элемента: {A.index(0)}')
+    A.reverse()
+    print(f'Индекс последненго нулевого элемента: {len(A) - 1 - A.index(0)}')
+
+except Exception:
+    print("В списке нет нулей")
