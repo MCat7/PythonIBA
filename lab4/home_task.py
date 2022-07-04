@@ -136,14 +136,22 @@ def flight_in_destination(list):
     print(table)
     return True
 
+
 def flight_in_days(list):
     table = prettytable.PrettyTable(["Пункт назначения", "Номер рейса", "Тип самолета", "Время вылета", "Дни недели"])
-    day = str(input("Введите день недели"))
-    for i in list:
-        if i.get_days_of_the_week()[day]:
-            table.add_row([str(i.get_destination()), str(i.get_flight_number()), str(i.get_aircraft_type()),
-                           str(i.get_departure_time()), str(i.days())])
-    print(table)
+
+    flag = True
+    while flag:
+        day = str(input("Введите день недели (\"Пн\", \"Вт\", \"Ср\", \"Чт\", \"Пт\", \"Сб\", \"Вс\")"))
+        if day in ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]:
+            for i in list:
+                if i.get_days_of_the_week()[day]:
+                    table.add_row([str(i.get_destination()), str(i.get_flight_number()), str(i.get_aircraft_type()),
+                                   str(i.get_departure_time()), str(i.days())])
+            print(table)
+            flag = False
+        else:
+            print("Повторите ввод")
     return True
 
 
