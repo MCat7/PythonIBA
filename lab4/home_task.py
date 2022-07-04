@@ -142,8 +142,9 @@ def flight_in_days(list):
 
     flag = True
     while flag:
-        day = str(input("Введите день недели (\"Пн\", \"Вт\", \"Ср\", \"Чт\", \"Пт\", \"Сб\", \"Вс\")"))
-        if day in ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]:
+        day = str(input("Введите день недели (\"Пн\", \"Вт\", \"Ср\", \"Чт\", \"Пт\", \"Сб\", \"Вс\")")).upper()
+        if day in ["ПН", "ВТ", "СР", "ЧТ", "ПТ", "СБ", "ВС"]:
+            day =str(day[0].upper())+str(day[1].lower())
             for i in list:
                 if i.get_days_of_the_week()[day]:
                     table.add_row([str(i.get_destination()), str(i.get_flight_number()), str(i.get_aircraft_type()),
@@ -163,7 +164,7 @@ def end():
 if __name__ == '__main__':
 
     flight_list = []
-    flight_list.append(Airline("BOEING", "Vilnus", 1111, "12.00", set_days(1111)))
+    #flight_list.append(Airline("BOEING", "Vilnus", 1111, "12.00", set_days(1111)))
     flight_list.append(Airline("BOEING", "Vilnus", 2222, "13.00", weekend_days()))
     flight_list.append(Airline("BOEING", "Vilnus", 3333, "14.00", all_days()))
     flight_list.append(Airline("BOEING", "Warshaw", 1122, "12.00", all_days()))
@@ -173,18 +174,23 @@ if __name__ == '__main__':
 
     flag = True
     while flag:
-        print("1. Просмотреть все рейсы")
-        print("2. Проверить рейсы по пункту назначения")
-        print("3. Проверить рейсы по дню недели")
-        print("4. Закончить работу")
-        select = int(input("Выберите пункт меню_ "))
-        # flag = switch(select)
-        if select == 1:
-            all_flight(flight_list)
-        elif select == 2:
-            flight_in_destination(flight_list)
-        elif select == 3:
-            flight_in_days(flight_list)
-        elif select == 4:
-            end()
-            flag = False
+        try:
+            print("1. Просмотреть все рейсы")
+            print("2. Проверить рейсы по пункту назначения")
+            print("3. Проверить рейсы по дню недели")
+            print("4. Закончить работу")
+            select = int(input("Выберите пункт меню_ "))
+            # flag = switch(select)
+            if select == 1:
+                all_flight(flight_list)
+            elif select == 2:
+                flight_in_destination(flight_list)
+            elif select == 3:
+                flight_in_days(flight_list)
+            elif select == 4:
+                end()
+                flag = False
+            else:
+                print("Такого пункта меню нет")
+        except:
+            print("Некорректный ввод")
