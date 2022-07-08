@@ -1,29 +1,59 @@
 class TribonacciIterator:
     def __init__(self, n):
         self.n = n
-        self.counter = 1
-
+        self.current = 1
+        self.a = 0
+        self.b = 0
+        self.c = 1
+        self.lst = [self.a, self.b, self.c]
 
     def __iter__(self):
         return self
 
     def __next__(self):
-        if self.counter in (3, 4) and self.counter <= self.n:
-            self.counter += 1
-            return 1
-        elif self.counter in (1, 2) and self.counter <= self.n:
-            self.counter += 1
+        if self.current in (1, 2):
+            self.current += 1
             return 0
-        elif self.counter <= self.n:
-            x = (self.counter - 1) + (self.counter - 2) + (self.counter - 3)
-            self.counter += 1
+        elif self.current == 3:
+            self.current += 1
+            return 1
+        elif self.n >= self.current:
+            x = sum(self.lst)
+            self.lst[0], self.lst[1], self.lst[2] = self.lst[1], self.lst[2], x
+            self.current += 1
             return x
         else:
             raise StopIteration
 
 
+def tribonacciIteratorGenerator():
+    a = 0
+    b = 0
+    c = 1
+    current = 1
+    while True:
+        if current in (1, 2):
+            current += 1
+            yield 0
+        elif current == 3:
+            current += 1
+            yield 1
+        else:
+            x = a + b + c
+            a, b, c = b, c, x
+            current += 1
+            yield x
+
+
 if __name__ == '__main__':
-    it = TribonacciIterator(20)
+    it = TribonacciIterator(10)
     for i in it:
-        # вывод текущего элемента (который возвращает итератор)
         print(i)
+    itg = tribonacciIteratorGenerator()
+    for i in range(50):
+        print(f'{i+1}-й элемент последовательности: {next(itg)}')
+
+
+
+
+
