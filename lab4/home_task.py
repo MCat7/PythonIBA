@@ -83,6 +83,18 @@ class Airline:
                f"Время вылета: {self.__departure_time}\n" \
                f"Дни недели: {self.days()} "
 
+    def __gt__(self, other):
+        return self.__departure_time > other.__departure_time
+
+    def __lt__(self, other):
+        return self.__departure_time < other.__departure_time
+
+    def __eq__(self, other):
+        return self.__departure_time == other.__departure_time
+
+    def __ne__(self, other):
+        return self.__departure_time != other.__departure_time
+
 
 def set_days(flight_number):
     days = {"Пн": False, "Вт": False, "Ср": False, "Чт": False, "Пт": False, "Сб": False, "Вс": False}
@@ -188,6 +200,7 @@ if __name__ == '__main__':
             elif select == 3:
                 flight_in_days(flight_list)
             elif select == 4:
+                # print(flight_list[0] > flight_list[1])
                 end()
                 flag = False
             else:
